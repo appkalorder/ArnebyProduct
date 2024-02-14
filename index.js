@@ -1,7 +1,7 @@
 import express from 'express';
 import { handler as ssrHandler } from './dist/server/entry.mjs';
 
-const PORT = process.env.PORT ?? 3000;
+const PORT = process.env.PORT ?? 2999;
 
 const app = express();
 // Change this based on your astro.config.mjs, `base` option.
