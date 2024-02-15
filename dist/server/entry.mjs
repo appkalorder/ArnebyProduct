@@ -3,7 +3,7 @@ import http from 'node:http';
 import { TLSSocket } from 'node:tls';
 import { e as appendForwardSlash$1, j as joinPaths, t as trimSlashes, s as slash, p as prependForwardSlash$1, r as removeTrailingForwardSlash, f as collapseDuplicateSlashes } from './chunks/astro/assets-service_NC9P5WO9.mjs';
 import { A as AstroError, R as ResponseSentError, l as MiddlewareNoDataOrNextCalled, n as MiddlewareNotAResponse, G as GetStaticPathsRequired, o as InvalidGetStaticPathsReturn, p as InvalidGetStaticPathsEntry, q as GetStaticPathsExpectedParams, t as GetStaticPathsInvalidRouteParam, P as PageNumberParamNotFound, N as NoMatchingStaticPathFound, u as PrerenderDynamicEndpointPathCollide, v as LocalsNotAnObject, w as ASTRO_VERSION, C as ClientAddressNotAvailable, S as StaticClientAddressNotAvailable, x as renderEndpoint, y as ReservedSlotName, z as renderSlotToString, B as renderJSX, D as chunkToString, F as CantRenderPage, H as renderPage$1 } from './chunks/astro_aN12x_Qb.mjs';
-import { l as levels, g as getEventPrefix, L as Logger, A as AstroIntegrationLogger, manifest } from './manifest_2w6tGUba.mjs';
+import { l as levels, g as getEventPrefix, L as Logger, A as AstroIntegrationLogger, manifest } from './manifest_t5wCf4n0.mjs';
 import buffer from 'node:buffer';
 import crypto$1 from 'node:crypto';
 import https$1 from 'https';
@@ -9816,11 +9816,11 @@ const adapter = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const _page0  = () => import('./chunks/node_E_cM45ap.mjs');
-const _page1  = () => import('./chunks/index_QHl-c1bp.mjs');
-const _page2  = () => import('./chunks/profile_0TyRDAkT.mjs');
-const _page3  = () => import('./chunks/publish_YCPhY8u1.mjs');
-const _page4  = () => import('./chunks/signup_Yj-enbj-.mjs');
-const _page5  = () => import('./chunks/login_RHq2_erv.mjs');const pageMap = new Map([["node_modules/.pnpm/astro@4.1.2_typescript@5.3.3/node_modules/astro/dist/assets/endpoint/node.js", _page0],["src/pages/index.astro", _page1],["src/pages/profile.astro", _page2],["src/pages/publish.astro", _page3],["src/pages/signup.astro", _page4],["src/pages/login.astro", _page5]]);
+const _page1  = () => import('./chunks/index_nRPM_53m.mjs');
+const _page2  = () => import('./chunks/profile_l3RXqb78.mjs');
+const _page3  = () => import('./chunks/publish_1kGih2mb.mjs');
+const _page4  = () => import('./chunks/signup_9Z2BIk27.mjs');
+const _page5  = () => import('./chunks/login_CAJU1vly.mjs');const pageMap = new Map([["node_modules/.pnpm/astro@4.1.2_typescript@5.3.3/node_modules/astro/dist/assets/endpoint/node.js", _page0],["src/pages/index.astro", _page1],["src/pages/profile.astro", _page2],["src/pages/publish.astro", _page3],["src/pages/signup.astro", _page4],["src/pages/login.astro", _page5]]);
 const _manifest = Object.assign(manifest, {
 	pageMap,
 	renderers,
