@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import { handler as ssrHandler } from './dist/server/entry.mjs';
 
 const PORT = process.env.PORT ?? 3000;
+console.log(`Port: ${PORT}`);
 
 const app = express();
 app.disable('x-powered-by'); // Deshabilitar el encabezado "X-Powered-By"
