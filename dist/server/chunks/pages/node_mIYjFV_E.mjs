@@ -232,7 +232,7 @@ const $$Image = createComponent(async ($$result, $$props, $$slots) => {
     additionalAttributes.srcset = image.srcSet.attribute;
   }
   return renderTemplate`${maybeRenderHead()}<img${addAttribute(image.src, "src")}${spreadAttributes(additionalAttributes)}${spreadAttributes(image.attributes)}>`;
-}, "C:/Users/erick/Documents/ProyectosLocal/Proyectos_NodeJS/Proyectos/ArnebyWeb/web/node_modules/.pnpm/astro@4.1.2_typescript@5.3.3/node_modules/astro/components/Image.astro", void 0);
+}, "C:/Users/WELCOME/Documents/Arneby/ArnebyWeb_/ArnebyWeb/web/node_modules/.pnpm/astro@4.1.2_typescript@5.3.3/node_modules/astro/components/Image.astro", void 0);
 
 const $$Astro = createAstro();
 const $$Picture = createComponent(async ($$result, $$props, $$slots) => {
@@ -272,10 +272,10 @@ const $$Picture = createComponent(async ($$result, $$props, $$slots) => {
     const srcsetAttribute = props.densities || !props.densities && !props.widths ? `${image.src}${image.srcSet.values.length > 0 ? ", " + image.srcSet.attribute : ""}` : image.srcSet.attribute;
     return renderTemplate`<source${addAttribute(srcsetAttribute, "srcset")}${addAttribute("image/" + image.options.format, "type")}${spreadAttributes(sourceAdditionaAttributes)}>`;
   })} <img${addAttribute(fallbackImage.src, "src")}${spreadAttributes(imgAdditionalAttributes)}${spreadAttributes(fallbackImage.attributes)}> </picture>`;
-}, "C:/Users/erick/Documents/ProyectosLocal/Proyectos_NodeJS/Proyectos/ArnebyWeb/web/node_modules/.pnpm/astro@4.1.2_typescript@5.3.3/node_modules/astro/components/Picture.astro", void 0);
+}, "C:/Users/WELCOME/Documents/Arneby/ArnebyWeb_/ArnebyWeb/web/node_modules/.pnpm/astro@4.1.2_typescript@5.3.3/node_modules/astro/components/Picture.astro", void 0);
 
 const imageConfig = {"service":{"entrypoint":"astro/assets/services/sharp","config":{}},"domains":[],"remotePatterns":[],"endpoint":"astro/assets/endpoint/node"};
-					const assetsDir = new URL("file:///C:/Users/erick/Documents/ProyectosLocal/Proyectos_NodeJS/Proyectos/ArnebyWeb/web/dist/client/");
+					const assetsDir = new URL("file:///C:/Users/WELCOME/Documents/Arneby/ArnebyWeb_/ArnebyWeb/web/dist/client/");
 					const getImage = async (options) => await getImage$1(options, imageConfig);
 
 async function loadLocalImage(src, url) {
