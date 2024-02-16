@@ -1,0 +1,10 @@
+$WEB_COLOR_PRIMARY: #16e524;
+
+h1 {
+    font-size: 15px;
+}
+p {
+    font-size: 10px;
+    display: flex;
+    color: $WEB_COLOR_PRIMARY;
+}
