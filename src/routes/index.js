@@ -3,7 +3,7 @@ const router = Router();
 
 router
     .get('/', (req, res) => {res.render('index')})
-    .get('/panel', (req, res) => {res.render('panel')})
+    .get('/profile', (req, res) => {res.render('profile')})
     .get('/panel/app', (req, res) => {res.render('app')})
     .get('/panel/add', (req, res) => {res.render('panel-add')})
     .get('/panel/:idapp/post', (req, res) => {res.render('post')})
