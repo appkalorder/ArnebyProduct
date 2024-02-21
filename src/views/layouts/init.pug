@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+  head
+    title My Website
+    link(rel="stylesheet", href="/styles.css")
+    block header
+  body
+    header
+      // Contenido de la cabecera común a todas las páginas
+      nav
+        ul
+          li
+            a(href="/home") Home
+          li
+            a(href="/about") About
+          li
+            a(href="/contact") Contact
+    main
+      block content

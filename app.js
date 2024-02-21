@@ -16,7 +16,7 @@ app.use(morgan('dev')); // Usar Morgan para registrar las solicitudes HTTP
 app.use(cookieParser()); // Usar Cookie Parser para trabajar con cookies
 
 app.set('views', path.join(__dirname, 'src', 'views'));
-app.set('view engine', 'pug');;
+app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'src', 'public'))); //Access to Public folder
 
 // Definición de las rutas
