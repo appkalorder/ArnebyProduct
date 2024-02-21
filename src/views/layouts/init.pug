@@ -1,19 +1,13 @@
 doctype html
-html(lang="en")
+html
   head
-    title My Website
-    link(rel="stylesheet", href="/styles.css")
-    block header
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title CleverWritify aiPost
+    link(rel='stylesheet', href='/styles/index.min.css')
+    script(src='/js/app.js', defer='')
   body
-    header
-      // Contenido de la cabecera común a todas las páginas
-      nav
-        ul
-          li
-            a(href="/home") Home
-          li
-            a(href="/about") About
-          li
-            a(href="/contact") Contact
+    block header
     main
       block content
+    block footer
