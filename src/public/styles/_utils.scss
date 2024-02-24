@@ -10,6 +10,7 @@ $cGray3: #c8c8c8;
 $cYellow: #efa110;
 $cPrimaryHover: #00b451;
 $cPrimaryDark: #001609;
+$cTransparent: #ffffff00;
 
 div {
     max-width: 100%;
@@ -31,7 +32,7 @@ section {
     width: 1150px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 30px;
 }
 .block {
     align-items: flex-start;

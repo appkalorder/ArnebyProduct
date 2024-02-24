@@ -48,14 +48,11 @@ h1 {
     font-weight: 700;
 
     @include tablet {font-size: 33px;}
-    @include mobileHorizontal{font-size: 31px;}
-    @include mobile {font-size: 29px;}
+    @include mobileHorizontal{font-size: 32px;}
+    @include mobile {font-size: 30px;}
 }
 h2 {
     font-weight: 700;
     font-size: 23px;
-
-    @include tablet {font-size: 21px;}
-    @include mobileHorizontal{font-size: 19px;}
-    @include mobile {font-size: 18px;}
+    line-height: 26px;
 }

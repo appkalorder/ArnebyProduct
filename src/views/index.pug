@@ -1,5 +1,8 @@
 extends ./layouts/main
 
+block codeHead
+  <link rel="preload" href="https://src.arneby.com/web/home_banner.webp" as="image">
+
 block header
   include ./components/head
 
@@ -27,21 +30,99 @@ block content
       .block
         h2 Estos son los eventos más populares 🔥
         .dGrid.gridEvents
-          .eventLoop(style="background-image: url''")
-            .distance 5km de ti
-            .flag Popular
-            .price
-              span.priceUnit $5.99
-              span.pCurrency USD
-            .rate
-              .rateFill
-              .rateFill
-              .rateFill 
-              .rateFill
-              .rateEmpty
-            h3 Shinomiya Deluxe
-            span.city Santo Domingo
-            p.date Para: 5/Feb/2024, 5:00am
+          article.eventLoop(style="background-image: url('https://src.arneby.com/web/port_home_demo.webp')")
+            .eventContent
+              .data
+                .distance 5km de ti
+                .flag Popular
+              span.price
+                span.priceUnit $5.99
+                | USD
+              .rate
+                span.star.fill
+                span.star.fill
+                span.star.fill 
+                span.star.half
+                span.star
+              h3 Shinomiya Deluxe
+              span.city Santo Domingo
+              p.date Para: 5/Feb/2024, 5:00am
+
+          article.eventLoop(style="background-image: url('https://src.arneby.com/web/port_home_demo.webp')")
+            .eventContent
+              .data
+                .distance 5km de ti
+                .flag Popular
+              .price
+                span.priceUnit $5.99
+                span.pCurrency USD
+              .rate
+                .star.Fill
+                .star.Fill
+                .star.Fill 
+                .star.Fill
+                .star.Empty
+              h3 Shinomiya Deluxe
+              span.city Santo Domingo
+              p.date Para: 5/Feb/2024, 5:00am
+          
+
+          article.eventLoop(style="background-image: url('https://src.arneby.com/web/port_home_demo.webp')")
+            .eventContent
+              .data
+                .distance 5km de ti
+                .flag Popular
+              .price
+                span.priceUnit $5.99
+                span.pCurrency USD
+              .rate
+                .star.Fill
+                .star.Fill
+                .star.Fill 
+                .star.Fill
+                .star.Empty
+              h3 Shinomiya Deluxe
+              span.city Santo Domingo
+              p.date Para: 5/Feb/2024, 5:00am
+
+          
+          article.eventLoop(style="background-image: url('https://src.arneby.com/web/port_home_demo.webp')")
+            .eventContent
+              .data
+                .distance 5km de ti
+                .flag Popular
+              .price
+                span.priceUnit $5.99
+                span.pCurrency USD
+              .rate
+                .star.Fill
+                .star.Fill
+                .star.Fill 
+                .star.Fill
+                .star.Empty
+              h3 Shinomiya Deluxe
+              span.city Santo Domingo
+              p.date Para: 5/Feb/2024, 5:00am
+
+
+
+          article.eventLoop(style="background-image: url('https://src.arneby.com/web/port_home_demo.webp')")
+            .eventContent
+              .data
+                .distance 5km de ti
+                .flag Popular
+              .price
+                span.priceUnit $5.99
+                span.pCurrency USD
+              .rate
+                .star.Fill
+                .star.Fill
+                .star.Fill 
+                .star.Fill
+                .star.Empty
+              h3 Shinomiya Deluxe
+              span.city Santo Domingo
+              p.date Para: 5/Feb/2024, 5:00am
       .block
         h2 Apresurate ya mismo empiezan 😱
       .block
