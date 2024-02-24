@@ -1,0 +1,31 @@
+.btn {
+    padding: 10px 20px;
+    font-weight: 700;
+    background-color: $cPrimary;
+    font-size: 16px;
+    line-height: 17px;
+    color: $cBlack;
+    border-radius: 100px;
+    transition: all 0.2s ease-in-out;
+
+    &:Hover{
+        background-color: $cBlack;
+        color: $cWhite;
+    }
+}
+
+.btn-white {
+    padding: 15px 20px;
+    font-weight: 600;
+    background-color: $cWhite;
+    font-size: 16px;
+    line-height: 17px;
+    color: $cBlack;
+    border-radius: 100px;
+    transition: all 0.2s ease-in-out;
+
+    &:Hover{
+        background-color: $cGray2;
+        color: $cBlack;
+    }
+}

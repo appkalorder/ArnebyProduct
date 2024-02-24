@@ -1,20 +1,23 @@
-extends ./layouts/init
+extends ./layouts/main
+
+block header
+  include ./components/head
 
 block content
-.loginform
-  h2.sub-hero Registrate
-  form(name='register')
-    .field
-      label(for='text') Tu usuario: 
-      input#user(type='text', name='username', required='')
-    .field
-      label(for='email') Tu email: 
-      input#email(type='email', name='email', required='')
-    .field
-      label(for='password') Tu contrase&ntilde;a: 
-      input#password(type='password', name='password', required='')
-    .field
-      input.btn-dark-outline(type='submit', value='Registrarme')
-  p
-    | &iquest;Ya tienes una cuenta? 
-    a(target='_self', href='./login') Inicia Sesion
+  .loginform
+    h2.sub-hero Registrate
+    form(name='register')
+      .field
+        label(for='text') Tu usuario: 
+        input#user(type='text', name='username', required='')
+      .field
+        label(for='email') Tu email: 
+        input#email(type='email', name='email', required='')
+      .field
+        label(for='password') Tu contrase&ntilde;a: 
+        input#password(type='password', name='password', required='')
+      .field
+        input.btn-dark-outline(type='submit', value='Registrarme')
+    p
+      | &iquest;Ya tienes una cuenta? 
+      a(target='_self', href='./login') Inicia Sesion

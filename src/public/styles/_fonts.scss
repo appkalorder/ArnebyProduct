@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'Urbanist';
+    src: url('/fonts/urbanist/Urbanist-VariableFont_wght.woff2') format('woff2'),
+         url('/fonts/urbanist/Urbanist-VariableFont_wght.ttf') format('truetype');
+    font-weight: 1 1000;
+    font-stretch: 1 100%;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('/fonts/PlusJakartaSans/PlusJakartaSans-VariableFont_wght.woff2') format('woff2'),
+         url('/fonts/PlusJakartaSans/PlusJakartaSans-VariableFont_wght.ttf') format('truetype');
+    font-weight: 1 1000;
+    font-stretch: 1 100%;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('/fonts/PlusJakartaSans/PlusJakartaSans-Italic-VariableFont_wght.woff2') format('woff2'),
+         url('/fonts/PlusJakartaSans/PlusJakartaSans-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: 1 1000;
+    font-stretch: 1 100%;
+    font-style: italic;
+    font-display: swap;
+}
+
+//Texts
+h1, h2, h3, h4, h5, h6, p, div, a, li, ul, span {
+    font-family: 'Plus Jakarta Sans', 'Urbanist', Arial, sans-serif;
+}
+
+//Titles
+h1, h2, h3, h4, h5, h6 {
+    padding-bottom: 15px;
+}
+
+//Text no title
+p, a, li, ul, span {
+    font-size: 16px;
+}
+
+h1 {
+    font-size: 35px;
+    font-weight: 700;
+
+    @include tablet {font-size: 33px;}
+    @include mobileHorizontal{font-size: 31px;}
+    @include mobile {font-size: 29px;}
+}
+h2 {
+    font-weight: 700;
+    font-size: 23px;
+
+    @include tablet {font-size: 21px;}
+    @include mobileHorizontal{font-size: 19px;}
+    @include mobile {font-size: 18px;}
+}

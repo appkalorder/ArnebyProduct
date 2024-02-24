@@ -1,14 +1,16 @@
-extends ./layouts/init
+extends ./layouts/main
+block header
+  include ./components/head
 
 block content
-.loginform
-  h2.sub-hero Recupera tu Contrase&ntilde;a
-  form(name='register')
-    .field
-      label(for='email') Tu correo: 
-      input#user(type='email', name='username', required='')
-    .field
-      input.btn-dark-outline(type='submit', value='Recuperar Contraseña')
-  p
-    | &iquest;No tienes una cuenta? 
-    a(target='_self', href='./register') Registrate Aqu&iacute;
+  .loginform
+    h2.sub-hero Recupera tu Contrase&ntilde;a
+    form(name='register')
+      .field
+        label(for='email') Tu correo: 
+        input#user(type='email', name='username', required='')
+      .field
+        input.btn-dark-outline(type='submit', value='Recuperar Contraseña')
+    p
+      | &iquest;No tienes una cuenta? 
+      a(target='_self', href='./register') Registrate Aqu&iacute;
