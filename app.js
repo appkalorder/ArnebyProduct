@@ -9,7 +9,6 @@ import cookieParser from 'cookie-parser';
 
 const app = express();
 const __dirname = path.resolve(); // Corregir la obtención de __dirname
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
 
 // Initialize client.
 let redisClient = createClient()
@@ -19,7 +18,7 @@ redisClient.connect().catch(console.error);
 // Initialize store.
 let redisStore = new RedisStore({
   client: redisClient,
-  prefix: "myapp:",
+  prefix: process.env.FRONTEND_URL || "ArnebyWeb:",
 });
 
 // Configuración de la aplicación

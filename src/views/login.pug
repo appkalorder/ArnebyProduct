@@ -8,13 +8,13 @@ block content
     .container
       .block.loginform
         h1.sub-hero Iniciar Sesion
-        form#form-login(name='login')
+        form(name='login', action="", method="post")
           .field
             label(for='email') Tu email: 
-            input#email(type='email', name='email', required='')
+            input#email(type='email', name='email', required='', placeholder='jhon@example.com')
           .field
             label(for='password') Tu contrase&ntilde;a: 
-            input#password(type='password', name='password', required='')
+            input#password(type='password', name='password', required='', placeholder='*******')
           .field
             input.btn-dark(type='submit', value='Iniciar Sesion')
         p#app_notice

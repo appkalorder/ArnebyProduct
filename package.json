@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "dev": "node --env-file .env --watch index.js && --watch src/views/*.pug",
+    "dev": "node --env-file .env --watch index.js",
     "start": "node --env-file .env index.js && npm run tailwind:css",
     "tailwind:css": "postcss src/public/styles/tailwind.css -o src/public/styles/style.css"
   },

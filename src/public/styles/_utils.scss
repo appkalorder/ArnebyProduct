@@ -12,6 +12,11 @@ $cPrimaryHover: #00b451;
 $cPrimaryDark: #001609;
 $cTransparent: #ffffff00;
 
+//HTML ajust
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
 div {
     max-width: 100%;
 }
@@ -48,9 +53,16 @@ form {
     flex-direction: column;
     gap: 15px;
 
+    label {
+        padding-left: 15px;
+        font-size: 14px;
+        font-weight: 400;
+        color: $cBlack;
+    }
+
     input {
         border-radius: 100px;
-        padding: 10px 15px;
+        padding: 10px 18px;
         font-size: 15px;
         line-height: 22px;
         border: 2px solid $cGray2;

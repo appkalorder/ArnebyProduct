@@ -4,20 +4,25 @@ block header
   include ./components/head
 
 block content
-  .loginform
-    h2.sub-hero Registrate
-    form(name='register')
-      .field
-        label(for='text') Tu usuario: 
-        input#user(type='text', name='username', required='')
-      .field
-        label(for='email') Tu email: 
-        input#email(type='email', name='email', required='')
-      .field
-        label(for='password') Tu contrase&ntilde;a: 
-        input#password(type='password', name='password', required='')
-      .field
-        input.btn-dark-outline(type='submit', value='Registrarme')
-    p
-      | &iquest;Ya tienes una cuenta? 
-      a(target='_self', href='./login') Inicia Sesion
+  section
+    .container
+      .block.loginform
+        h2.sub-hero Registrate
+        form(name='register', action="", method="post")
+          .field
+            label(for='name') Nombre: 
+            input#user(type='text', name='name', required='', placeholder='Tus Nombres')
+          .field
+            label(for='last-name') Apellido: 
+            input#user(type='text', name='last-name', required='', placeholder='Tus Apellidos')
+          .field
+            label(for='email') Email: 
+            input#email(type='email', name='email', required='', placeholder='jhon@example.com')
+          .field
+            label(for='password') Contrase&ntilde;a: 
+            input#password(type='password', name='password', required='', placeholder='********')
+          .field
+            input.btn-dark(type='submit', value='Registrarme')
+        p
+          | &iquest;Ya tienes una cuenta? 
+          a(target='_self', href='./login') Inicia Sesion
