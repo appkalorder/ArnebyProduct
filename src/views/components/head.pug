@@ -11,11 +11,14 @@
           | Recomendado
 
       .headbtn
-
-        a.btn(href="")
-          | Publicar
-        a.btn(href="")
-          | Favoritos
-        a.avatar(href="")
-          img(src="/img/avatar.svg", alt="Avatar")
+        if islogged
+          a.btn(href="/account/post")
+            | Publicar
+          a.btn(href="/account/fav")
+            | Favoritos
+          a.avatar(href="/account")
+            img(src="/img/avatar.svg", alt="Avatar")
+        else
+          a.btn(href="/login")
+            | Identificate
 

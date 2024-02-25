@@ -10,11 +10,15 @@
 //CSS for components examples Banners, Alerts Bigs, and custom
 @import 'components';
 
-//CSS for events
-@import 'events';
-
 //CSS for header styles
 @import 'header';
 
 //CSS for footer styles
 @import 'footer';
+
+
+//Pages
+@import 'login';
+
+//CSS for events
+@import 'events';

@@ -15,14 +15,18 @@
   "license": "ISC",
   "dependencies": {
     "autoprefixer": "^10.4.17",
+    "connect-redis": "^7.1.1",
     "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
     "express-fileupload": "^1.4.3",
+    "express-session": "^1.18.0",
+    "install": "^0.13.0",
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "postcss": "^8.4.35",
     "postcss-cli": "^11.0.0",
     "pug": "^3.0.2",
+    "redis": "^4.6.13",
     "tailwindcss": "^3.4.1"
   }
 }

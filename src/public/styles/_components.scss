@@ -15,14 +15,23 @@ div .adHome {
     background: $cGrayRed;
     color: $cBlack;
     border-radius: 10px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 16px;
     transition: all 0.2s ease-in-out;
 
     &:hover {
         transform: translateY(-3px);
+        background: $cBlack;
+        color: $cWhite;
     }
 }
+
+//Forms
+.field {
+    display: grid;
+    width: 100%;
+}
+
 
 //Banner with Overlay
 .banner {

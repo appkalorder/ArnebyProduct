@@ -7,7 +7,7 @@ router
     .get('/', (req, res) => {res.render('index')})
 
     //Rutas del perfile - cuenta del usuario
-    .use('/profile', AcountRoute)
+    .use('/account', AcountRoute)
 
     .get('/panel/app', (req, res) => {res.render('app', {islogged: array})})
     .get('/panel/add', (req, res) => {res.render('panel-add')})

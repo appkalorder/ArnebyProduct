@@ -14,18 +14,31 @@
     }
 }
 
-.btn-white {
+.btn-white, .btn-dark {
     padding: 15px 20px;
     font-weight: 600;
-    background-color: $cWhite;
     font-size: 16px;
     line-height: 17px;
-    color: $cBlack;
     border-radius: 100px;
     transition: all 0.2s ease-in-out;
+}
+
+.btn-white {
+    background-color: $cWhite;
+    color: $cBlack;
 
     &:Hover{
         background-color: $cGray2;
+        color: $cBlack;
+    }
+}
+
+.btn-dark {
+    background-color: $cBlack;
+    color: $cWhite;
+
+    &:Hover{
+        background-color: $cWhite;
         color: $cBlack;
     }
 }

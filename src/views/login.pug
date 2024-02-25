@@ -4,20 +4,22 @@ block header
   include ./components/head
 
 block content
-  .loginform
-    h2.sub-hero Inicia Sesion
-    form#form-login(name='login')
-      .field
-        label(for='email') Tu email: 
-        input#email(type='email', name='email', required='')
-      .field
-        label(for='password') Tu contrase&ntilde;a: 
-        input#password(type='password', name='password', required='')
-      .field
-        input.btn-dark-outline(type='submit', value='Iniciar Sesion')
-    p#app_notice
-    p
-      | &iquest;No tienes una cuenta? 
-      a(target='_self', href='./register') Registrate Aqu&iacute;
-    p
-      a(target='_self', href='./forget-pass') Olvide mi contrase&ntilde;a
+  section
+    .container
+      .block.loginform
+        h1.sub-hero Iniciar Sesion
+        form#form-login(name='login')
+          .field
+            label(for='email') Tu email: 
+            input#email(type='email', name='email', required='')
+          .field
+            label(for='password') Tu contrase&ntilde;a: 
+            input#password(type='password', name='password', required='')
+          .field
+            input.btn-dark(type='submit', value='Iniciar Sesion')
+        p#app_notice
+        p
+          | &iquest;No tienes una cuenta? 
+          a(target='_self', href='/register') Registrate Aqu&iacute;
+        p
+          a(target='_self', href='/forget-pass') Olvide mi contrase&ntilde;a
