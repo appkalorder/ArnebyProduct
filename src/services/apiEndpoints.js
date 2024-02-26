@@ -5,8 +5,8 @@
 class apiQuery {
     apiURL = process.env.API_URL || "https://api.arneby.com/"
     
-    static async getEvents({ name, lastname, email, password }){
-        
+    static getEvents({ version }){
+        return apiURL + "/" + version + "/events/";
     }
 }
 
