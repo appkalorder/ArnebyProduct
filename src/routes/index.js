@@ -1,21 +1,26 @@
 import { Router } from 'express';
-import { AcountRoute } from './acount.js';
+import { AcountRoute } from './acountRoute.js';
+import { authRoute } from './authRoute.js';
+import { CSP } from '../middlewares/useCSP.js';
+import { authLogin } from '../middlewares/validateLogged.js';
 
 //Express Routes
 const router = Router();
 
 router
-    .get('/', (req, res) => {res.render('index')})
+    //Content Security Policy
+    .use(CSP)
+
+    //Home
+    .get('/', (req, res) => {res.render('index', { logged: req.session.logged })})
+
+    //Logins
+    .use('/', authRoute)
 
     //Rutas del perfile - cuenta del usuario
-    .use('/account', AcountRoute)
+    .use('/account', authLogin, AcountRoute)
 
-    .get('/login', (req, res) => {res.render('login')})
-    .get('/forget-pass', (req, res) => {res.render('forget-pass')})
-    .get('/register', (req, res) => {res.render('register')});
-
-
-//Page 404
-router.use((req, res) => {res.status(404).render('404')});
+    //Page 404
+    .use((req, res) => {res.status(404).render('404', { logged: req.session.logged })});
 
 export default router;

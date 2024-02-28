@@ -1,9 +1,15 @@
-const { SECRET_KEY_TOKEN } = process.env;
-import jwt from 'jsonwebtoken';
-
-
 export const authLogin = (req, res, next) => {
-    const token = req.cookies.token;
-    console.log(token);
+    //Si tenemos guardado un token en la session
+    if(!req.session.logged){
+        res.redirect('/login');
+    }
+    next();
+}
+
+export const authNotLogin = (req, res, next) => {
+    //Si tenemos guardado un token en la session
+    if(req.session.logged){
+        res.redirect('/');
+    }
     next();
 }

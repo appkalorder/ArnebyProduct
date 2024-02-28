@@ -17,7 +17,12 @@ block content
             input#password(type='password', name='password', required='', placeholder='*******')
           .field
             input.btn-dark(type='submit', value='Iniciar Sesion')
-        p#app_notice
+
+        if err
+          p.notice.error #{err}
+        if ok
+          p.notice.success #{ok}
+        
         p
           | &iquest;No tienes una cuenta? 
           a(target='_self', href='/register') Registrate Aqu&iacute;

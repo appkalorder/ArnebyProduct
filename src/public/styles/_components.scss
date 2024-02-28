@@ -33,6 +33,25 @@ div .adHome {
 }
 
 
+//Noticias
+.notice{
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 100%;
+    background: $cInfo;
+    color: $cInfoTxt;
+
+    &.error {
+        background: $cError;
+        color: $cErrorTxt;
+    }
+
+    &.success {
+        background: $cSuccess;
+        color: $cSuccessTxt;
+    }
+}
+
 //Banner with Overlay
 .banner {
     border-radius: 20px;

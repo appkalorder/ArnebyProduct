@@ -1,5 +1,6 @@
 import express from 'express';
 import session from 'express-session';
+import bodyParser from 'body-parser';
 import RedisStore from "connect-redis"
 import {createClient} from "redis"
 import morgan from 'morgan';
@@ -31,9 +32,8 @@ app.use(morgan('dev')); // Usar Morgan para registrar las solicitudes HTTP
 app.use(session({
     store: redisStore,
     secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true }
+    resave: true,
+    saveUninitialized: true
 }))
 
 app.set('views', path.join(__dirname, 'src', 'views'));
@@ -41,6 +41,11 @@ app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'src', 'public'))); //Access to Public folder
 
 // Definición de las rutas
+// Configurar body-parser para analizar solicitudes POST
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+//Rutas
 app.use(Routes);
 
 export default app;
