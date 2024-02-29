@@ -7,15 +7,22 @@ block content
     .container
       .block.loginform
         h2.sub-hero Recupera tu Contrase&ntilde;a
-        form(name='register', action="/forget-pass", method="post")
+        form(name='register', action="/new-password", method="post")
           .field
-            label(for='password') Tu Nueva Contraseña: 
+            label(for='password') Tu Nueva Contraseña:
             input#user(type='password', name='password', required='', placeholder='*********')
           .field
-            label(for='rep-password') Repite tu Contraseña: 
-            input#user(type='password', name='rep-password', required='', placeholder='*********')
+            label(for='repeatpassword') Repite tu Contraseña: 
+            input#user(type='password', name='repeatpassword', required='', placeholder='*********')
+            input(type='hidden', name='token', value=token)
           .field
             input.btn-dark(type='submit', value='Establecer Contraseña')
+
+        if err
+          p.notice.error #{err}
+        if ok
+          p.notice.success #{ok}
+        
         p
           | &iquest;No tienes una cuenta? 
           a(target='_self', href='./register') Registrate Aqu&iacute;

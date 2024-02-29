@@ -13,6 +13,12 @@ block content
             input#user(type='email', name='email', required='', placeholder='jhon@example.com')
           .field
             input.btn-dark(type='submit', value='Recuperar Contraseña')
+
+        if err
+          p.notice.error #{err}
+        if ok
+          p.notice.success #{ok}
+
         p
           | &iquest;No tienes una cuenta? 
           a(target='_self', href='./register') Registrate Aqu&iacute;

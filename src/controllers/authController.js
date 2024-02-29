@@ -1,7 +1,12 @@
 import Auth from '../Models/authModel.js';
 
+export const logout = async (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
+}
+
 export const getLogin = async (req, res) => {
-    return res.render('login');
+    return res.render('login', { session: req.session });
 };
 
 export const postLogin = async (req, res) => {
@@ -9,16 +14,16 @@ export const postLogin = async (req, res) => {
         // Ahora `req.body` contendrá los datos enviados desde el formulario
         const { email, password } = req.body;
         //Error no hay valor del correo
-        if (!email) return res.render('login', { err: "Falta el correo electrónico." });
+        if (!email) return res.render('login', { err: "Falta el correo electrónico.", session: req.session });
         //Error no hay valor de la contraseña
-        if (!password) return res.render('login', { err: "Falta la contraseña." });
+        if (!password) return res.render('login', { err: "Falta la contraseña.", session: req.session  });
 
         //Los valores de la Api
         const result = await Auth.login({email: email, password: password});
 
         //Comprobar no fue stisfactorio, y no obtuvimos un token
         if (!result.success && !result.data.token || !result.success){
-            return res.render('login', {err : result.msg});
+            return res.render('login', {err : result.msg, session: req.session });
         }
 
         //Guardamos Session
@@ -29,17 +34,17 @@ export const postLogin = async (req, res) => {
         req.session.avatar = result.data.user.avatar; //Guardamos Avatar
 
         //Redireccionar a cuenta
-        return res.redirect('account');
+        return res.redirect('/account');
 
     } catch (err) {
-        return res.render('login', {err : "Error interno"});
+        return res.render('login', {err : "Error interno", session: req.session });
     }
 };
 
 
 
 export const getRegister = async (req, res) => {
-    return res.render('register');
+    return res.render('register', { session: req.session });
 };
 
 
@@ -47,40 +52,95 @@ export const getRegister = async (req, res) => {
 export const postRegister = async (req, res) => {
     try {
         // Ahora `req.body` contendrá los datos enviados desde el formulario
-        const { email, password } = req.body;
+        const { name, lastname, email, password } = req.body;
+        //Error no hay valor del correo
+        if (!name) return res.render('register', { err: "Falta el nombre." });
+        //Error no hay valor del correo
+        if (!lastname) return res.render('register', { err: "Falta el apellido." });
         //Error no hay valor del correo
         if (!email) return res.render('register', { err: "Falta el correo electrónico." });
         //Error no hay valor de la contraseña
         if (!password) return res.render('register', { err: "Falta la contraseña." });
 
         //Los valores de la Api
-        const result = await Auth.login({email: email, password: password});
+        const result = await Auth.register({name: name, lastname: lastname, email: email, password: password});
 
         //Comprobar no fue stisfactorio, y no obtuvimos un token
         if (!result.success && !result.data.token || !result.success){
-            return res.render('register', {err : result.msg});
+            return res.render('register', {err : result.msg, session: req.session });
         }
 
         //Redireccionar al Login
         return res.redirect('/login');
 
     } catch (err) {
-        return res.render('register', {err : "Error interno"});
+        return res.render('register', {err : "Error interno", session: req.session });
     }
 };
 
 export const getForgetPass = async (req, res) => {
-    return res.render('forget-pass');
+    return res.render('forget-pass', { session: req.session  });
 };
 
 export const postForgetPass = async (req, res) => {
-    return res.render('forget-pass');
+    try {
+        // Ahora `req.body` contendrá los datos enviados desde el formulario
+        const { email } = req.body;
+
+        //Error no hay valor del correo
+        if (!email) return res.render('forget-pass', { err: "Falta el correo electrónico." });
+
+        //Los valores de la Api
+        const result = await Auth.lostPassword({ email: email });
+
+        //Comprobar no fue stisfactorio, y no obtuvimos un token
+        if (!result.success && !result.data.token || !result.success){
+            return res.render('forget-pass', {err : result.msg, session: req.session });
+        }
+
+        //Redireccionar al Login
+        return res.render('forget-pass', {ok : result.msg, session: req.session });
+
+    } catch (err) {
+        return res.render('forget-pass', {err : "Error interno", session: req.session });
+    }
 };
 
 export const getNewPass = async (req, res) => {
-    return res.render('new-pass');
+    //Token
+    const token = req.params.token;
+
+    //Error no hay valor del correo
+    if (!token) return res.render('new-pass', { err: "Falta el token." });
+
+    return res.render('new-pass', { token: token, session: req.session });
 };
 
 export const postNewPass = async (req, res) => {
-    return res.render('new-pass');
+    try {
+        // Ahora `req.body` contendrá los datos enviados desde el formulario
+        const { password, repeatpassword, token } = req.body;
+
+        //Las contraseñás no son iguales
+        if(password !== repeatpassword) {
+            return res.render('new-pass', { err: "Las contraseñas no son iguales" })
+        }
+
+        //Error no hay valor del correo
+        if (!token) return res.render('new-pass', { err: "Falta el token." });
+
+        //Los valores de la Api
+        const result = await Auth.newPassword({ password, token });
+
+        //Comprobar no fue stisfactorio, y no obtuvimos un token
+        if (!result.success && !result.data.token || !result.success){
+            return res.render('new-pass', {token: token, err : result.msg, session: req.session });
+        }
+
+        //Redireccionar al Login
+        return res.redirect('/login');
+
+    } catch (err) {
+        return res.render('new-pass', {err : "Error interno", session: req.session });
+    }
 };

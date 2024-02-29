@@ -11,13 +11,13 @@
           | Recomendado
 
       .headbtn
-        if logged
+        if session && session.logged
           a.btn(href="/account/post")
             | Publicar
           a.btn(href="/account/fav")
             | Favoritos
           a.avatar(href="/account")
-            img(src="/img/avatar.svg", alt="Avatar")
+            img(src=session.avatar, alt = "Avatar")
         else
           a.btn(href="/login")
             | Identificate

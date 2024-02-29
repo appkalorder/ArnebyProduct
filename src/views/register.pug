@@ -13,8 +13,8 @@ block content
             label(for='name') Nombre: 
             input#user(type='text', name='name', required='', placeholder='Tus Nombres')
           .field
-            label(for='last-name') Apellido: 
-            input#user(type='text', name='last-name', required='', placeholder='Tus Apellidos')
+            label(for='lastname') Apellido: 
+            input#user(type='text', name='lastname', required='', placeholder='Tus Apellidos')
           .field
             label(for='email') Email: 
             input#email(type='email', name='email', required='', placeholder='jhon@example.com')
@@ -23,6 +23,11 @@ block content
             input#password(type='password', name='password', required='', placeholder='********')
           .field
             input.btn-dark(type='submit', value='Registrarme')
+
+        if err
+          p.notice.error #{err}
+        if ok
+          p.notice.success #{ok}
         p
           | &iquest;Ya tienes una cuenta? 
           a(target='_self', href='./login') Inicia Sesion

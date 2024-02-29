@@ -12,7 +12,7 @@ router
     .use(CSP)
 
     //Home
-    .get('/', (req, res) => {res.render('index', { logged: req.session.logged })})
+    .get('/', (req, res) => {res.render('index', { session: req.session })})
 
     //Logins
     .use('/', authRoute)
@@ -21,6 +21,6 @@ router
     .use('/account', authLogin, AcountRoute)
 
     //Page 404
-    .use((req, res) => {res.status(404).render('404', { logged: req.session.logged })});
+    .use((req, res) => {res.status(404).render('404', { session: req.session })});
 
 export default router;

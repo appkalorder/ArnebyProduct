@@ -22,7 +22,7 @@ class apiEndpoints {
     }
 
     //URl para pedir nueva contraseña con el token
-    static lostPassword({ version }){
+    static newPassword({ version }){
         return this.apiURL + "/" + version + "/auth/new-password";
     }
 

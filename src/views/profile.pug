@@ -4,3 +4,11 @@ block header
   include ./components/head
 
 block content
+  section
+      .container
+        .block
+          .profile
+            img(src=session.avatar, alt = "Avatar")
+            p.txt session.name
+            p.txt session.email
+            a.btn(href = "/logout") Cerrar Sesion
