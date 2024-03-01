@@ -26,6 +26,30 @@ div .adHome {
     }
 }
 
+//Cuenta
+.profile {
+    max-width: 290px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-self: center;
+    padding: 15px;
+    border-radius: 15px;
+    border: 2px solid $cBlack;
+
+    img {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .txt {
+        font-weight: 500;
+        font-size: 17px;
+        color: $cBlack;
+    }
+}
+
 //Forms
 .field {
     display: grid;

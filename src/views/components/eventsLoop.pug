@@ -1,0 +1,20 @@
+a.eventLoop(href=`/event/${event.id}`)
+  img(src=event.thumbnail)
+  .eventContent
+    .data
+      .distance= event.Location
+      .flag= event.flag 
+    h3= event.Title
+    p.organizer Organizado: #{event.Organizer}
+    .rate
+      - for (let i = 0; i < event.Rate; i++)
+        - if (i + 1 === event.Rate && event.Rate % 1 !== 0)
+          span.star.half
+        - else
+          span.star.fill
+      - for (let i = event.Rate; i < 5; i++)
+        span.star
+    span.price
+      span.priceUnit $#{event.Price}
+      | #{event.Currency}
+    p.date Para: #{event.DateStart}

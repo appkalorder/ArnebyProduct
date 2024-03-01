@@ -9,6 +9,9 @@ block content
         .block
           .profile
             img(src=session.avatar, alt = "Avatar")
-            p.txt session.name
-            p.txt session.email
+            p.txt= session.name
+            p.txt= session.email
             a.btn(href = "/logout") Cerrar Sesion
+
+block footer
+  include ./components/footer

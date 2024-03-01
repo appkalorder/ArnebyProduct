@@ -1,0 +1,43 @@
+footer {
+    padding-top: 40px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+
+    .menuFooter {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        .item, a {
+            color: $cGray5;
+            font-size: 15px;
+            font-weight: 400;
+            transition: all 0.2s ease-in-out;
+            
+            &:hover {
+                color: $cPrimaryHover;
+            }
+        }
+    }
+
+    .credits {
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        img {
+            max-width: 140px;
+            height: auto;
+        }
+
+        p {
+            font-size: 14px;
+            color: $cGray4;
+        }
+    }
+}

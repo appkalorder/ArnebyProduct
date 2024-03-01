@@ -2,47 +2,38 @@
 const domain = window.location.origin;
 
 //Page Login
-if (window.location.href.includes('/login')) {
-    const formlogin = document.getElementById("form-login");
-    if (formlogin) {
-        formlogin.addEventListener("submit", e => {
-            e.preventDefault(); // Detener la acción por defecto del formulario
-            const appnotice = document.getElementById("app_notice");
-            const data = Object.fromEntries(
-                new FormData(e.target)
-            )
-        
-            // Realizar la solicitud POST a la API
-            fetch(`${domain}/api/v1/auth/login`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => {
-                appnotice.classList.add('visible');
-                appnotice.textContent = data.msg;
-                if (data.data.token) {
-                    // Inicio de sesión exitoso, refresca la página
-                    window.location.href = `${domain}/panel`
-                } else {
-                    // Mostrar un mensaje de error
-                    appnotice.textContent = data.msg;
-                }
-            })
-            .catch(error => {
+if (window.location.href.includes('/account/post')) {
+    // Obtener referencias a los campos de fecha de inicio y fin
+    const startDateInput = document.getElementById('startDate');
+    const endDateInput = document.getElementById('endDate');
 
-                console.error("Error en la solicitud:", error);
-                // Mostrar un mensaje de error genérico
-                appnotice.textContent = "Ha ocurrido un error en la solicitud.";
-            });
+    // Función para validar la fecha de inicio
+    function validateStartDate() {
+        const startDate = new Date(startDateInput.value);
+        const endDate = new Date(endDateInput.value);
 
-            //Resetear Valores
-            formlogin.reset();
-        });
+        // Comprobar si la fecha de inicio es posterior a la fecha de fin
+        if (startDate > endDate) {
+            alert('La fecha de inicio no puede ser posterior a la fecha de fin');
+            startDateInput.value = ''; // Limpiar el campo de fecha de inicio
+        }
     }
+
+    // Función para validar la fecha de fin
+    function validateEndDate() {
+        const startDate = new Date(startDateInput.value);
+        const endDate = new Date(endDateInput.value);
+
+        // Comprobar si la fecha de fin es anterior a la fecha de inicio
+        if (endDate < startDate) {
+            alert('La fecha de fin no puede ser anterior a la fecha de inicio');
+            endDateInput.value = ''; // Limpiar el campo de fecha de fin
+        }
+    }
+
+    // Agregar oyentes de eventos para la validación
+    startDateInput.addEventListener('change', validateStartDate);
+    endDateInput.addEventListener('change', validateEndDate);
 }
 
 //Page Panel
@@ -97,77 +88,4 @@ if (window.location.href.includes('/panel')) {
             console.error("Error en la solicitud a la API:", error);
         });
     }
-}
-
-//Page Panel - Add App
-if (window.location.href.includes('/panel/add')) {
-    // Obtén el elemento <textarea> y el elemento para mostrar el recuento de caracteres
-    const formPost = document.getElementById('form-app-create');
-    const textarea = document.getElementById('resume');
-    const charCount = document.getElementById('char-count');
-
-    if (formPost) {
-        const appnotice = document.getElementById("app_notice");
-        formPost.addEventListener('submit', e => {
-            e.preventDefault();
-            const dataform = Object.fromEntries(new FormData(e.target));
-
-            // Realizar la solicitud POST a la API
-            fetch(`${domain}/api/v1/app`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(dataform)
-            })
-            .then(response => response.json())
-            .then(data => {
-                appnotice.classList.add('visible');
-                appnotice.textContent = data.msg;
-                if (data.success) {
-                    // Inicio de sesión exitoso, refresca la página
-                    window.location.href = `${domain}/panel`;
-                } else {
-                    // Mostrar un mensaje de error
-                    appnotice.textContent = data.msg;
-                }
-            })
-            .catch(error => {
-                appnotice.classList.add('visible');
-                console.error("Error en la solicitud:", error);
-                // Mostrar un mensaje de error genérico
-                appnotice.textContent = "Ha ocurrido un error en la solicitud.";
-            });
-
-            //Resetear Formulario
-            formPost.reset();
-        })
-    }
-
-    // Define la cantidad máxima de caracteres permitidos
-    const maxLength = 250;
-
-    // Escucha el evento 'input' en el <textarea>
-    textarea.addEventListener('input', function () {
-        const currentLength = textarea.value.length;
-
-        // Actualiza el recuento de caracteres
-        charCount.textContent = currentLength + '/' + maxLength;
-
-        // Si se supera el límite de caracteres, recorta el contenido del <textarea>
-        if (currentLength > maxLength) {
-            textarea.value = textarea.value.slice(0, maxLength);
-            charCount.textContent = maxLength + '/' + maxLength;
-        }
-    });
-}
-
-//Page App
-if (window.location.href.includes('/panel/app')){
-    const url = new URL(window.location.href);
-    // Obtiene el valor del parámetro 'appid' de la URL
-    const appid = url.searchParams.get("appid");
-    console.log('App: ' + appid);
-
-    
 }

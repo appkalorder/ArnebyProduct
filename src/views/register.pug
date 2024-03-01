@@ -29,5 +29,9 @@ block content
         if ok
           p.notice.success #{ok}
         p
-          | &iquest;Ya tienes una cuenta? 
+          | &iquest;Ya tienes una cuenta?
           a(target='_self', href='./login') Inicia Sesion
+
+
+block footer
+  include ./components/footer

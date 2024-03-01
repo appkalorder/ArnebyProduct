@@ -28,24 +28,30 @@ app.use(cookieParser()); // Usar Cookie Parser para trabajar con cookies
 
 app.use(morgan('dev')); // Usar Morgan para registrar las solicitudes HTTP
 
+//Inicializar la Web
+try {
+  app.use(session({
+      store: redisStore,
+      secret: process.env.SECRET,
+      resave: true,
+      saveUninitialized: true
+  }))
 
-app.use(session({
-    store: redisStore,
-    secret: process.env.SECRET,
-    resave: true,
-    saveUninitialized: true
-}))
+  app.set('views', path.join(__dirname, 'src', 'views'));
+  app.set('view engine', 'pug');
+  app.use(express.static(path.join(__dirname, 'src', 'public'))); // Acceso a la carpeta Public
 
-app.set('views', path.join(__dirname, 'src', 'views'));
-app.set('view engine', 'pug');
-app.use(express.static(path.join(__dirname, 'src', 'public'))); //Access to Public folder
+  // Definición de las rutas
+  // Configurar body-parser para analizar solicitudes POST
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json());
 
-// Definición de las rutas
-// Configurar body-parser para analizar solicitudes POST
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+  // Rutas
+  app.use(Routes);
 
-//Rutas
-app.use(Routes);
+} catch (error) {
+  console.error('Error al configurar la aplicación:', error);
+  
+}
 
 export default app;

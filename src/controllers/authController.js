@@ -30,6 +30,7 @@ export const postLogin = async (req, res) => {
         req.session.logged = true;
         req.session.token = result.data.token; //Guardamos Token
         req.session.name = result.data.user.name; //Guardamos Nombre
+        req.session.email = result.data.user.email; //Guardamos Email
         req.session.role = result.data.user.role; //Guardamos Role
         req.session.avatar = result.data.user.avatar; //Guardamos Avatar
 
