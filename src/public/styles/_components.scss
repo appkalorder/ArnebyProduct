@@ -4,6 +4,14 @@ div .adHome {
     background-position: center;
 }
 
+.pageText{
+    padding-top: 40px;
+    align-self: center;
+    gap: 10px;
+    line-height: 26px;
+    max-width: 800px;
+}
+
 .listCategories {
     flex-wrap: wrap;
     flex-direction: row;

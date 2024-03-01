@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { AcountRoute } from './acountRoute.js';
 import { authRoute } from './authRoute.js';
+import { pageRoute } from './pageRoute.js';
 import { CSP } from '../middlewares/useCSP.js';
 import { authLogin } from '../middlewares/validateLogged.js';
 
@@ -11,8 +12,8 @@ router
     //Content Security Policy
     .use(CSP)
 
-    //Home
-    .get('/', (req, res) => {res.render('index', { session: req.session })})
+    //Paginas
+    .use('/', pageRoute)
 
     //Logins
     .use('/', authRoute)
