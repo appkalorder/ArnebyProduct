@@ -4,7 +4,13 @@ block header
   include ./components/head
 
 block content
-
+  section
+    .container
+      .block.pageError
+        h1 Error 404
+        p La URL que intentas acceder, parece ya no estar disponible.
+        a.btn(href="/")
+            | < Volver al Inicio
 
 block footer
   include ./components/footer

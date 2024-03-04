@@ -26,13 +26,23 @@ class apiEndpoints {
         return this.apiURL + "/" + version + "/auth/new-password";
     }
 
+    //URL for post Event
+    static newFile({ version }){
+        return this.apiURL + "/" + version + "/file/upload/";
+    }
+
+    //URL for post Event
+    static newEvent({ version, id }){
+        return this.apiURL + "/" + version + "/event/";
+    }
+
     //URL for getEvents
-    static getOneEvents({ version, id }){
+    static getOneEvent({ version, id }){
         return this.apiURL + "/" + version + "/event/" + id;
     }
 
     //URL for getEvents
-    static getEvents({ version, params }){
+    static getEvent({ version, params }){
         return this.apiURL + "/" + version + "/event/" + params;
     }
 }

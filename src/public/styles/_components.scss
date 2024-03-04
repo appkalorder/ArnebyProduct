@@ -12,6 +12,22 @@ div .adHome {
     max-width: 800px;
 }
 
+.pageError{
+    padding-top: 40px;
+    align-self: center;
+    gap: 10px;
+    line-height: 26px;
+    max-width: 800px;
+    align-items: center;
+    text-align: center;
+    min-height: 60vh;
+    justify-content: center;
+
+    h1 {
+        color: $cGray4;
+    }
+}
+
 .listCategories {
     flex-wrap: wrap;
     flex-direction: row;

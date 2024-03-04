@@ -23,7 +23,8 @@ export const postLogin = async (req, res) => {
 
         //Comprobar no fue stisfactorio, y no obtuvimos un token
         if (!result.success && !result.data.token || !result.success){
-            return res.render('login', {err : result.msg, session: req.session });
+            const errorMessage = Array.isArray(result.data) ? result.data[0].message : result.msg;
+            return res.render('login', { err: errorMessage, session: req.session });
         }
 
         //Guardamos Session
@@ -67,8 +68,9 @@ export const postRegister = async (req, res) => {
         const result = await Auth.register({name: name, lastname: lastname, email: email, password: password});
 
         //Comprobar no fue stisfactorio, y no obtuvimos un token
-        if (!result.success && !result.data.token || !result.success){
-            return res.render('register', {err : result.msg, session: req.session });
+        if (!result.success ){
+            const errorMessage = Array.isArray(result.data) ? result.data[0].message : result.msg;
+            return res.render('register', { err: errorMessage, session: req.session });
         }
 
         //Redireccionar al Login
@@ -95,8 +97,9 @@ export const postForgetPass = async (req, res) => {
         const result = await Auth.lostPassword({ email: email });
 
         //Comprobar no fue stisfactorio, y no obtuvimos un token
-        if (!result.success && !result.data.token || !result.success){
-            return res.render('forget-pass', {err : result.msg, session: req.session });
+        if (!result.success){
+            const errorMessage = Array.isArray(result.data) ? result.data[0].message : result.msg;
+            return res.render('forget-pass', { err: errorMessage, session: req.session });
         }
 
         //Redireccionar al Login
@@ -134,8 +137,9 @@ export const postNewPass = async (req, res) => {
         const result = await Auth.newPassword({ password, token });
 
         //Comprobar no fue stisfactorio, y no obtuvimos un token
-        if (!result.success && !result.data.token || !result.success){
-            return res.render('new-pass', {token: token, err : result.msg, session: req.session });
+        if (!result.success){
+            const errorMessage = Array.isArray(result.data) ? result.data[0].message : result.msg;
+            return res.render('new-pass', { err: errorMessage, session: req.session });
         }
 
         //Redireccionar al Login

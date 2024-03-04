@@ -8,7 +8,7 @@ block content
     .container
       .block.postForm
         h2.sub-hero Haz conocer tu Evento
-        form(name='register', action="/new-event", method="post")
+        form(name='register', action="", method="post", enctype="multipart/form-data")
           .field
             label(for='title') Titulo: 
             input(type='text', name='title', required='', placeholder='¿Como se llama tu evento?')
@@ -19,7 +19,7 @@ block content
           .dGrid.col2
             .field
               label(for='category') Categoria: 
-              select(name='category', title="Selecciona la categoria del evento")
+              select(name='category', required='', title="Selecciona la categoria del evento")
                 option(value='musica') Música
                 option(value='arte') Arte
                 option(value='deporte') Deporte
@@ -35,15 +35,19 @@ block content
 
           .field
             label(for='price') (USD) Precio: 
-            input(type='number', name='price', step='0.01', placeholder='¿Cuál es el precio del evento?')
+            input(type='number', name='price', step='0.01', required='', placeholder='¿Cuál es el precio del evento?')
+
+          .field
+            label(for='url') Link de Inscripcion: 
+            input(type='url', name='url', required='', placeholder='Link para que se inscriban al evento')
 
           .field
             label(for='startDate') Fecha de Inicio: 
-            input(type='datetime-local', id="startDate", name='startDate')
+            input(type='datetime-local', id="startDate", required='', name='startDate')
 
           .field
             label(for='endDate') Fecha de Fin: 
-            input(type='datetime-local', id="endDate", name='endDate')
+            input(type='datetime-local', id="endDate", required='', name='endDate')
 
           .field
             label(for='map') Mapa:
@@ -52,15 +56,15 @@ block content
           .dGrid.col2
             .field
               label(for='latitude') Latitud: 
-              input(type='text', name='latitude', disabled)
+              input(type='number', name='latitude')
 
             .field
               label(for='longitude') Longitud: 
-              input(type='text', name='longitude', disabled)
+              input(type='number', name='longitude')
 
           .field
             label(for='address') Dirección: 
-            input(type='text', name='address', placeholder='¿Dónde se llevará a cabo el evento?')
+            input(type='text', name='address', required='', placeholder='¿Dónde se llevará a cabo el evento?')
 
           .field
             label(for='thumbnail') Imagen del evento: 
@@ -77,6 +81,3 @@ block content
 
 block footer
   include ./components/footer
-
-
-block scripts
