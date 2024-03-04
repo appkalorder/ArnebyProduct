@@ -26,6 +26,9 @@ router
 
     .use('/event', eventRoute)
 
+    //SingleView
+    .get('/eventview', (req, res) => {res.status(200).render('eventSingle', { session: req.session })})
+
     //Page 404
     .use((req, res) => {res.status(404).render('404', { session: req.session })});
 
