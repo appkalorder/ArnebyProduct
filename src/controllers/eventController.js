@@ -1,27 +1,34 @@
 import Event from '../Models/eventModel.js';
 import File from '../Models/fileModel.js';
+import fs from 'fs';
+import Category from '../Models/categoryModel.js';
 
 export const getFormEvent = async (req, res) => {
-    
-    return res.render('eventForm', { session: req.session  });
+    const categories = await Category.get({});
+    console.log(categories);
+    return res.render('eventForm', { categories: categories.data, session: req.session  });
 };
 
 export const postFormEvent = async (req, res) => {
     try {
         const file = req.files.thumbnail;
-        const formData = new FormData();
-        // Agregar imagen como Blob al FormData
-        const blob = new Blob([file.data], { type: file.mimetype });
-        formData.append('token', req.session.token);
-        formData.append('file', blob, file.name);
+        const token = req.session.token;
 
-        //Subir Archivo
-        const resultFile = await File.post(formData);
+        // Subir Archivo
+        const resultFile = await File.post({ file, token });
         //Comprobar no fue stisfactorio, y no obtuvimos un token
         if (!resultFile.success){
             const errorMessage = Array.isArray(resultFile.data) ? resultFile.data[0].message : resultFile.msg;
             return res.render('eventForm', { err: errorMessage, session: req.session });
         }
+
+        // Eliminar el archivo temporal después de subirlo
+        fs.unlink(file.tempFilePath, (err) => {
+            if (err) {
+                console.error('Error al eliminar el archivo temporal:', err);
+            }
+        });
+
 
         //Get Id Featured Image
         const idFeaturedImage = resultFile.data._id;
@@ -30,7 +37,7 @@ export const postFormEvent = async (req, res) => {
         const startDateTimestamp = startDate.getTime();
         //TimeStamp
         const endDate = new Date(req.body.endDate);
-        const endDateTimestamp = startDate.getTime();
+        const endDateTimestamp = endDate.getTime();
 
         // Agregar campos de texto como JSON
         const eventData = {
@@ -38,8 +45,8 @@ export const postFormEvent = async (req, res) => {
             content: req.body.description,
             category: req.body.category,
             location: {
-                longitude: req.body.longitude,
-                latitude: req.body.latitude,
+                longitude: parseFloat(req.body.longitude),
+                latitude: parseFloat(req.body.latitude),
                 address: req.body.address,
             },
             virtual: req.body.presencial === 'on' ? true : false,
@@ -50,28 +57,34 @@ export const postFormEvent = async (req, res) => {
             prices: [{
                 plan: "Entrada",
                 benefits: [""],
-                price: req.body.price
+                price: parseFloat(req.body.price)
             }],
             startDate: startDateTimestamp,
             endDate: endDateTimestamp,
             featuredImage: idFeaturedImage,
         };
 
+        console.log(eventData)
+
         //Los valores de la Api
-        const result = await Event.post(formData);
-        console.log(result);
+        const result = await Event.post(eventData);
+
+        //Obtenemos las categorias
+        const categories = await Category.get({});
 
         //Comprobar no fue stisfactorio, y no obtuvimos un token
         if (!result.success){
             const errorMessage = Array.isArray(result.data) ? result.data[0].message : result.msg;
-            return res.render('eventForm', { err: errorMessage, session: req.session });
+            return res.render('eventForm', { err: errorMessage, categories: categories, session: req.session });
         }
 
         //Redireccionar al Login
-        return res.render('eventForm', {ok : result.msg, session: req.session });
-
+        return res.render('eventForm', {ok : result.msg, categories: categories, session: req.session });
     } catch (err) {
-        console.error(err);
-        return res.render('eventForm', {err : "Error interno", session: req.session });
+        //Obtenemos las categorias
+        const categories = await Category.get({});
+        console.log(categories);
+
+        return res.render('eventForm', {err : "Error interno", categories: categories, session: req.session });
     }
 };

@@ -1,5 +1,9 @@
+import Category from '../Models/categoryModel.js';
+
 export const pageHome = async (req, res) => {
-    return res.render('index', { session: req.session });
+    const categories = await Category.get({});
+    console.log(categories);
+    return res.render('index', { categories: categories.data, session: req.session });
 };
 
 export const pageCondiciones = async (req, res) => {

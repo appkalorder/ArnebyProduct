@@ -4,11 +4,7 @@ import axios from 'axios';
 class eventModel{
     static async getCategories(){
         const url = apiurl.newEvent({ version: 'v1'});
-        return await axios.post(url, obj, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        })
+        return await axios.post(url, obj)
         .then(response => {
             return response.data;
         })
@@ -20,11 +16,7 @@ class eventModel{
     static async post(obj){
         //Obtener la URL e la api para registrar
         const url = apiurl.newEvent({ version: 'v1'});
-        return await axios.post(url, obj, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        })
+        return await axios.post(url, obj)
         .then(response => {
             return response.data;
         })

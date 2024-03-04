@@ -32,6 +32,31 @@ class apiEndpoints {
     }
 
     //URL for post Event
+    static getCategory({ version }){
+        return this.apiURL + "/" + version + "/event/category/";
+    }
+
+    //URL for post Event
+    static getCategoryById({ version, id }){
+        return this.apiURL + "/" + version + "/event/category/" + id;
+    }
+
+    //URL for post Event
+    static getCategoryBySlug({ version, slug }){
+        return this.apiURL + "/" + version + "/event/category_slug/" + slug;
+    }
+
+    //URL for post Event
+    static getCategoryByName({ version, name }){
+        return this.apiURL + "/" + version + "/event/category_name/" + name;
+    }
+
+    //URL for post Event
+    static newCategory({ version }){
+        return this.apiURL + "/" + version + "/event/category/";
+    }
+
+    //URL for post Event
     static newEvent({ version, id }){
         return this.apiURL + "/" + version + "/event/";
     }

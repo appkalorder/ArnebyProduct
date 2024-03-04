@@ -18,16 +18,9 @@ block content
       .block
         h2 ¿Que tipo de evento quieres conocer? 👀
         .dFlex.listCategories
-          a.catSingle(href="/") Conciertos
-          a.catSingle(href="") Festivales
-          a.catSingle(href="") Eventos deportivos
-          a.catSingle(href="") Conferencias y charlas
-          a.catSingle(href="") Exposiciones y ferias
-          a.catSingle(href="") Actividades al aire libre
-          a.catSingle(href="") Arte y cultura
-          a.catSingle(href="") Gastronomía y comida
-          a.catSingle(href="") Cine y teatro
-          a.catSingle(href="") Fiesta
+          if categories && categories.length
+            each category in categories
+              a.catSingle(href=`/${category.slug}`)= category.name
       .block
         h2 Estos son los eventos más populares 🔥
         .dGrid.gridEvents

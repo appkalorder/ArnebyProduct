@@ -1,5 +1,8 @@
 extends ./layouts/main
 
+block codeHead
+  link(rel='stylesheet', href='/styles/leaflet.css')
+
 block header
   include ./components/head
 
@@ -20,10 +23,9 @@ block content
             .field
               label(for='category') Categoria: 
               select(name='category', required='', title="Selecciona la categoria del evento")
-                option(value='musica') Música
-                option(value='arte') Arte
-                option(value='deporte') Deporte
-
+                if categories && categories.length
+                  each category in categories
+                    option(value=`${category._id}`)=category.name
             .field
               p.label ¿Tu evento es presencial?
               .switchForm
@@ -51,16 +53,16 @@ block content
 
           .field
             label(for='map') Mapa:
-            // Aquí puedes agregar el código para integrar un mapa
+            #map
 
           .dGrid.col2
             .field
               label(for='latitude') Latitud: 
-              input(type='number', name='latitude')
+              input(type='text', name='latitude', id="latitude")
 
             .field
               label(for='longitude') Longitud: 
-              input(type='number', name='longitude')
+              input(type='text', name='longitude', id="longitude")
 
           .field
             label(for='address') Dirección: 
@@ -77,6 +79,9 @@ block content
           p.notice.error #{err}
         if ok
           p.notice.success #{ok}
+
+block codeBody
+  script(src='/js/leaflet.js')
 
 
 block footer
