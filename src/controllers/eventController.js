@@ -3,6 +3,19 @@ import File from '../Models/fileModel.js';
 import fs from 'fs';
 import Category from '../Models/categoryModel.js';
 
+export const getEventSlug = async (req, res) => {
+    try {
+        const events = await Event.get({events: 8, page: 1});
+        const categories = await Category.get({});
+        const event = await Event.getSlug({slug: req.params.slug});
+
+        console.log(event);
+        return res.render('eventSingle', {events: events.data, event: event.data ,categories: categories.data, session: req.session });
+    } catch (err) {
+        console.log(err);
+        return res.render('404', {err : "Error interno", session: req.session });
+    }
+}
 
 export const getFormEvent = async (req, res) => {
     const categories = await Category.get({});
@@ -74,7 +87,6 @@ export const postFormEvent = async (req, res) => {
         //Comprobar no fue stisfactorio, y no obtuvimos un token
         if (!result.success){
             const errorMessage = Array.isArray(result.data) ? result.data[0].message : result.msg;
-            console.log(categories);
             return res.render('eventForm', { err: errorMessage, categories: categories.data, session: req.session });
         }
 
@@ -82,7 +94,6 @@ export const postFormEvent = async (req, res) => {
         return res.render('eventForm', {ok : result.msg, categories: categories.data, session: req.session });
 
     } catch (err) {
-        console.log(categories);
         return res.render('eventForm', {err : "Error interno", categories: categories.data, session: req.session });
     }
 };

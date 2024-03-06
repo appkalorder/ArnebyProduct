@@ -14,6 +14,18 @@ class eventModel{
         });
     }
 
+    static async getSlug({ slug }){
+        //Obtener la URL e la api para registrar
+        const url = apiurl.getEventSlug({ version: 'v1', slug: slug });
+        return await axios.get(url)
+        .then(response => {
+            return response.data;
+        })
+        .catch(error => {
+            return errorCatch(error);
+        });
+    }
+
     static async get({events, page}){
         //Obtener la URL e la api para registrar
         const url = apiurl.getEvent({ version: 'v1', events: events, page: page });

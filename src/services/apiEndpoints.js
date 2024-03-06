@@ -62,8 +62,13 @@ class apiEndpoints {
     }
 
     //URL for getEvents
-    static getOneEvent({ version, id }){
+    static getEventId({ version, id }){
         return this.apiURL + "/" + version + "/event/" + id;
+    }
+
+    //URL for getEvents
+    static getEventSlug({ version, slug }){
+        return this.apiURL + "/" + version + "/event/slug/" + slug;
     }
 
     //URL for getEvents

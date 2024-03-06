@@ -4,32 +4,55 @@ block header
   include ./components/head
 
 block content
+  - const formatDate = (timestamp) => {
+    - const date = new Date(timestamp * 1000);
+    - const day = date.getDate();
+    - const monthNames = ["ene", "feb", "mar", "abr", "may", "jun",
+    -   "jul", "ago", "sep", "oct", "nov", "dic"
+    - ];
+    - const monthIndex = date.getMonth();
+    - const year = date.getFullYear();
+    - const hour = date.getHours();
+    - const minute = date.getMinutes();
+    - const ampm = hour >= 12 ? 'pm' : 'am';
+    - const formattedHour = hour % 12 || 12;
+    - return `${day} / ${monthNames[monthIndex]} / ${year} a las ${formattedHour}:${minute < 10 ? '0' : ''}${minute}${ampm}`;
+  - };
+
   section
     .container
       .block
         .singleEvent
-          img(src="https://src.arneby.com/web/port_party_demo.jpg", alt="Imagen del evento")
+          //- Mostrar la imagen del evento
+          img(src=`https://src.arneby.com/${event.featuredImage.urls.find(url => url.name === "original").url}`, alt="Imagen del evento")
           div.txt
+            //- Mostrar el nombre del evento
             p.txtBold Nombre del Evento
-            p Tributo a Marc Anthony
+            p= event.title
+            //- Mostrar la descripción del evento
             p.txtBold Descripción del Evento
-            p.txtJustify Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta itaque nesciunt nisi magnam praesentium perspiciatis quam, fugit, quas error corrupti totam. Impedit natus voluptatum repudiandae earum iusto, obcaecati tenetur nesciunt.
+            p.txtJustify= event.content
+            //- Mostrar la dirección del evento
             p.txtBold Dirección:
-            p Dirección del Evento
+            p= `${event.location.country}, ${event.location.province}, ${event.location.address}`
           div.Data
-            div 
-              p.txtBold Categoría:
-              p Categoría del Evento
             div
+              //- Mostrar la categoría del evento
+              p.txtBold Categoría:
+              p= event.category.name
+            div
+              //- Mostrar el precio del evento
               p.txtBold Precio:
-              p Precio del Evento
-            div 
+              //- Si el precio es cero, mostrar "GRATIS", de lo contrario, mostrar el precio
+              p= event.prices[0].price === 0 ? 'GRATIS' : `$${event.prices[0].price} USD`
+            div
+              //- Mostrar la fecha y hora de inicio del evento
               p.txtBold Fecha de Inicio:
-              p Fecha de inicio del Evento
-            div 
+              p= formatDate(event.startDate)
+            div
+              //- Mostrar la fecha y hora de fin del evento
               p.txtBold Fecha de Fin:
-              p Fecha de fin del Evento
-            
+              p= formatDate(event.endDate)
 
 block footer
   include ./components/footer

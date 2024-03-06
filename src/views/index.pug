@@ -21,133 +21,18 @@ block content
           if categories && categories.length
             each category in categories
               a.catSingle(href=`/${category.slug}`)= category.name
-      .block
-        h2 Estos son los eventos más populares 🔥
-        .dGrid.gridEvents
 
-          a.eventLoop(href="")
-            img(src="https://src.arneby.com/web/port_party_demo.jpg")
-            .eventContent
-              .data
-                .distance Santo Domingo
-                .flag Popular
-              h3 Shinomiya Deluxe
-              p.organizer Organizado: ESPE Santo Domingo
-              .rate
-                span.star.fill
-                span.star.fill
-                span.star.fill
-                span.star.half
-                span.star
-              span.price
-                span.priceUnit $5.99
-                | USD
-              p.date Para: 5/Feb/2024, 5:00am
-
-          a.eventLoop(href="").ad
-            img(src="https://src.arneby.com/web/port_party_demo.jpg")
-            .eventContent
-              .data
-                .distance Santo Domingo
-                .flag Popular
-              h3 Shinomiya Deluxe
-              p.organizer Organizado: ESPE Santo Domingo
-              .rate
-                span.star.fill
-                span.star.fill
-                span.star.fill
-                span.star.half
-                span.star
-              span.price
-                span.priceUnit $5.99
-                | USD
-              p.date Para: 5/Feb/2024, 5:00am
-
-
-
-          a.eventLoop(href="")
-            img(src="https://src.arneby.com/web/port_party_demo.jpg")
-            .eventContent
-              .data
-                .distance Santo Domingo
-                .flag Popular
-              h3 Shinomiya Deluxe
-              p.organizer Organizado: ESPE Santo Domingo
-              .rate
-                span.star.fill
-                span.star.fill
-                span.star.fill
-                span.star.half
-                span.star
-              span.price
-                span.priceUnit $5.99
-                | USD
-              p.date Para: 5/Feb/2024, 5:00am
-
-
-          a.eventLoop(href="")
-            img(src="https://src.arneby.com/web/port_party_demo.jpg")
-            .eventContent
-              .data
-                .distance Santo Domingo
-                .flag Popular
-              h3 Shinomiya Deluxe
-              p.organizer Organizado: ESPE Santo Domingo
-              .rate
-                span.star.fill
-                span.star.fill
-                span.star.fill
-                span.star.half
-                span.star
-              span.price
-                span.priceUnit $5.99
-                | USD
-              p.date Para: 5/Feb/2024, 5:00am
-
-
-          a.eventLoop(href="")
-            img(src="https://src.arneby.com/web/port_party_demo.jpg")
-            .eventContent
-              .data
-                .distance Santo Domingo
-                .flag Popular
-              h3 Shinomiya Deluxe
-              p.organizer Organizado: ESPE Santo Domingo
-              .rate
-                span.star.fill
-                span.star.fill
-                span.star.fill
-                span.star.half
-                span.star
-              span.price
-                span.priceUnit $5.99
-                | USD
-              p.date Para: 5/Feb/2024, 5:00am
-
-
-          a.eventLoop(href="")
-            img(src="https://src.arneby.com/web/port_party_demo.jpg")
-            .eventContent
-              .data
-                .distance Santo Domingo
-                .flag Popular
-              h3 Shinomiya Deluxe
-              p.organizer Organizado: ESPE Santo Domingo
-              .rate
-                span.star.fill
-                span.star.fill
-                span.star.fill
-                span.star.half
-                span.star
-              span.price
-                span.priceUnit $5.99
-                | USD
-              p.date Para: 5/Feb/2024, 5:00am
-
-      .block
-        h2 Apresurate ya mismo empiezan 😱
-      .block
-        h2 Estos son los eventos más cercanos 😎
+      if events && events.length > 0
+        .block
+          h2 Estos son los eventos más populares 🔥
+          .dGrid.gridEvents
+            //- Iteramos sobre cada evento
+            each event in events
+              //- Renderizamos cada evento usando tu componente eventLoop
+              include ./components/eventsLoop.pug
+      else
+        .block
+          h2 No hay eventos disponibles
 
 block footer
   include ./components/footer
