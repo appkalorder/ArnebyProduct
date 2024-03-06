@@ -36,7 +36,7 @@ export const postLogin = async (req, res) => {
         req.session.avatar = result.data.user.avatar; //Guardamos Avatar
 
         //Redireccionar a cuenta
-        return res.redirect('/account');
+        return res.render('login', {ok : "Login exitoso. Serás redirigido en unos segundos.", redir: '/account', session: req.session });
 
     } catch (err) {
         return res.render('login', {err : "Error interno", session: req.session });
@@ -73,8 +73,8 @@ export const postRegister = async (req, res) => {
             return res.render('register', { err: errorMessage, session: req.session });
         }
 
-        //Redireccionar al Login
-        return res.redirect('/login');
+        // Renderizar la pantalla con un mensaje de éxito
+        res.render('register', { ok: "Registro exitoso. Serás redirigido en unos segundos.", redir: '/login', session: req.session });
 
     } catch (err) {
         return res.render('register', {err : "Error interno", session: req.session });
@@ -131,7 +131,7 @@ export const postNewPass = async (req, res) => {
         }
 
         //Error no hay valor del correo
-        if (!token) return res.render('new-pass', { err: "Falta el token." });
+        if (!token) return res.render('new-pass', { err: "Falta el token.", redir: '/forget-pass' });
 
         //Los valores de la Api
         const result = await Auth.newPassword({ password, token });
@@ -142,10 +142,11 @@ export const postNewPass = async (req, res) => {
             return res.render('new-pass', { err: errorMessage, session: req.session });
         }
 
-        //Redireccionar al Login
-        return res.redirect('/login');
+        // Renderizar la pantalla con un mensaje de éxito
+        res.render('new-pass', { ok: "Contraseña actualizada exitosamente. Serás redirigido en unos segundos.", redir: '/login', session: req.session });
 
     } catch (err) {
+        console.log(err);
         return res.render('new-pass', {err : "Error interno", session: req.session });
     }
 };

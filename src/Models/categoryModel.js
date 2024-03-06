@@ -1,4 +1,5 @@
 import apiurl from '../services/apiEndpoints.js';
+import errorCatch from '../Models/errorModel.js';
 import axios from 'axios';
 
 class categoryModel{
@@ -10,7 +11,7 @@ class categoryModel{
             return response.data;
         })
         .catch(error => {
-            return error.response.data;
+            return errorCatch(error);
         });
     }
 
@@ -22,7 +23,7 @@ class categoryModel{
             return response.data;
         })
         .catch(error => {
-            return error.response.data;
+            return errorCatch(error);
         });
     }
 
@@ -34,7 +35,7 @@ class categoryModel{
             return response.data;
         })
         .catch(error => {
-            return error.response.data;
+            return errorCatch(error);
         });
     }
 
@@ -46,7 +47,7 @@ class categoryModel{
             return response.data;
         })
         .catch(error => {
-            return error.response.data;
+            return errorCatch(error);
         });
     }
 
@@ -58,7 +59,7 @@ class categoryModel{
             return response.data;
         })
         .catch(error => {
-            return error.response.data;
+            return errorCatch(error);
         });
     }
 }

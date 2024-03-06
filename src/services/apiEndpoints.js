@@ -67,8 +67,8 @@ class apiEndpoints {
     }
 
     //URL for getEvents
-    static getEvent({ version, params }){
-        return this.apiURL + "/" + version + "/event/" + params;
+    static getEvent({ version, events, page }){
+        return this.apiURL + "/" + version + "/event/?events=" + events + "&page=" + page;
     }
 }
 

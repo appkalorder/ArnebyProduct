@@ -2,6 +2,8 @@ extends ./layouts/main
 block header
   include ./components/head
 
+block codeBodyTop
+
 block content
   section
     .container
@@ -13,8 +15,8 @@ block content
             input#user(type='password', name='password', required='', placeholder='*********')
           .field
             label(for='repeatpassword') Repite tu Contraseña: 
-            input#user(type='password', name='repeatpassword', required='', placeholder='*********')
-            input(type='hidden', name='token', value=token)
+            input#repeat(type='password', name='repeatpassword', required='', placeholder='*********')
+            input#token(type='hidden', name='token', value=token)
           .field
             input.btn-dark(type='submit', value='Establecer Contraseña')
 
@@ -25,8 +27,15 @@ block content
         
         p
           | &iquest;No tienes una cuenta? 
-          a(target='_self', href='./register') Registrate Aqu&iacute;
+          a(target='_self', href='/register') Registrate Aqu&iacute;
+      
+  if redir
+    script(nonce=nonce).
+      setTimeout(function() {
+        window.location.href = "#{redir}";
+      }, 3000);
 
+block codeBody
 
 block footer
   include ./components/footer

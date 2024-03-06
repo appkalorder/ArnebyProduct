@@ -1,4 +1,5 @@
 import apiurl from '../services/apiEndpoints.js';
+import errorCatch from '../Models/errorModel.js';
 import axios from 'axios';
 
 class eventModel{
@@ -9,7 +10,19 @@ class eventModel{
             return response.data;
         })
         .catch(error => {
-            return error.response.data;
+            return errorCatch(error);
+        });
+    }
+
+    static async get({events, page}){
+        //Obtener la URL e la api para registrar
+        const url = apiurl.getEvent({ version: 'v1', events: events, page: page });
+        return await axios.get(url)
+        .then(response => {
+            return response.data;
+        })
+        .catch(error => {
+            return errorCatch(error);
         });
     }
 
@@ -21,7 +34,7 @@ class eventModel{
             return response.data;
         })
         .catch(error => {
-            return error.response.data;
+            return errorCatch(error);
         });
     }
 }

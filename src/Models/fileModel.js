@@ -1,4 +1,5 @@
 import apiurl from '../services/apiEndpoints.js';
+import errorCatch from '../Models/errorModel.js';
 import axios from 'axios';
 import fs from 'fs';
 
@@ -20,8 +21,7 @@ class fileModel{
             });
             return response.data;
         } catch (error) {
-            console.error('Error en la solicitud:', error.response.data);
-            throw error.response.date;
+            return errorCatch(error);
         }
     }
 }

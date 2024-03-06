@@ -16,3 +16,4 @@ authRoute
     .post('/register', authNotLogin, postRegister )
     .post('/forget-pass', authNotLogin, postForgetPass )
     .post('/new-password', authNotLogin, postNewPass )
+    .post('/new-password/:token', authNotLogin, postNewPass )

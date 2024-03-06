@@ -29,6 +29,12 @@ block content
         p
           a(target='_self', href='/forget-pass') Olvide mi contrase&ntilde;a
 
+  if redir
+    script(nonce=nonce).
+      setTimeout(function() {
+        window.location.href = "#{redir}";
+      }, 3000);
+
 
 block footer
   include ./components/footer

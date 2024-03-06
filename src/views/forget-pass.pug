@@ -21,7 +21,13 @@ block content
 
         p
           | &iquest;No tienes una cuenta? 
-          a(target='_self', href='./register') Registrate Aqu&iacute;
+          a(target='_self', href='/register') Registrate Aqu&iacute;
+
+  if redir
+    script(nonce=nonce).
+      setTimeout(function() {
+        window.location.href = "#{redir}";
+      }, 3000);
 
 
 block footer

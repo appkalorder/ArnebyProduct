@@ -30,7 +30,14 @@ block content
           p.notice.success #{ok}
         p
           | &iquest;Ya tienes una cuenta?
-          a(target='_self', href='./login') Inicia Sesion
+          a(target='_self', href='/login') Inicia Sesion
+
+          
+  if redir
+    script(nonce=nonce).
+      setTimeout(function() {
+        window.location.href = "#{redir}";
+      }, 3000);
 
 
 block footer
