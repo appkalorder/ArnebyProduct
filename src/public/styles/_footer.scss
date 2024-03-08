@@ -55,6 +55,10 @@ footer {
         display: flex;
     }
 
+    @include mobile(){
+        display: flex;
+    }
+
 
     .content {
         max-width: 400px;
