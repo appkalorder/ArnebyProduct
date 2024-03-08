@@ -51,6 +51,10 @@ footer {
     background: $cWhite;
     border-top: 1px solid $cGray2;
 
+    @include computer(){
+        display: none;
+    }
+
     @include tablet(){
         display: flex;
     }
