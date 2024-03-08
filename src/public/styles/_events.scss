@@ -49,38 +49,37 @@
 
 //EventSingle
 .singleEvent {
-    max-width: 750px;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-self: center;
-    padding: 15px;
-    border-radius: 15px;
-    border: 2px solid $cBlack;
+    flex-direction: row;
+    gap: 30px;
 
     img {
         max-width: 290px;
+        aspect-ratio: 4/5;
+        object-fit: cover;
         border-radius: 10px;
         overflow: hidden;
         align-self: center;
     }
 
-    .txt {
-        font-weight: 500;
-        font-size: 17px;
+    .eventContent {
+        width: calc(100% - 290px);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .title {
+        font-size: 28px;
+        line-height: 35px;
+        font-weight: 700;
         color: $cBlack;
     }
     .txtBold {
         font-weight: bold;
         font-size: 17px;
         color: $cBlack;
-    }
-    .txtJustify {
-        font-weight: 500;
-        font-size: 17px;
-        color: $cBlack;
-        text-align: justify;
     }
     .Data {
         display: grid;

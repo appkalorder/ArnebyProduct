@@ -23,36 +23,30 @@ block content
     .container
       .block
         .singleEvent
-          //- Mostrar la imagen del evento
           img(src=`https://src.arneby.com/${event.featuredImage.urls.find(url => url.name === "original").url}`, alt="Imagen del evento")
-          div.txt
-            //- Mostrar el nombre del evento
-            p.txtBold Nombre del Evento
-            p= event.title
-            //- Mostrar la descripción del evento
-            p.txtBold Descripción del Evento
-            p.txtJustify= event.content
-            //- Mostrar la dirección del evento
-            p.txtBold Dirección:
-            p= `${event.location.country}, ${event.location.province}, ${event.location.address}`
-          div.Data
-            div
-              //- Mostrar la categoría del evento
-              p.txtBold Categoría:
-              p= event.category.name
-            div
-              //- Mostrar el precio del evento
-              p.txtBold Precio:
-              //- Si el precio es cero, mostrar "GRATIS", de lo contrario, mostrar el precio
-              p= event.prices[0].price === 0 ? 'GRATIS' : `$${event.prices[0].price} USD`
-            div
-              //- Mostrar la fecha y hora de inicio del evento
-              p.txtBold Fecha de Inicio:
-              p= formatDate(event.startDate)
-            div
-              //- Mostrar la fecha y hora de fin del evento
-              p.txtBold Fecha de Fin:
-              p= formatDate(event.endDate)
+          .eventContent
+            h1.title= event.title
+            p.description= event.content
+            p.address= `${event.location.country}, ${event.location.province}, ${event.location.address}`
+
+            div.Data
+              div
+                //- Mostrar la categoría del evento
+                p.txtBold Categoría:
+                p= event.category.name
+              div
+                //- Mostrar el precio del evento
+                p.txtBold Precio:
+                //- Si el precio es cero, mostrar "GRATIS", de lo contrario, mostrar el precio
+                p= event.prices[0].price === 0 ? 'GRATIS' : `$${event.prices[0].price} USD`
+              div
+                //- Mostrar la fecha y hora de inicio del evento
+                p.txtBold Fecha de Inicio:
+                p= formatDate(event.startDate)
+              div
+                //- Mostrar la fecha y hora de fin del evento
+                p.txtBold Fecha de Fin:
+                p= formatDate(event.endDate)
 
 block footer
   include ./components/footer

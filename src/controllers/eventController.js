@@ -9,7 +9,6 @@ export const getEventSlug = async (req, res) => {
         const categories = await Category.get({});
         const event = await Event.getSlug({slug: req.params.slug});
 
-        console.log(event);
         return res.render('eventSingle', {events: events.data, event: event.data ,categories: categories.data, session: req.session });
     } catch (err) {
         console.log(err);
