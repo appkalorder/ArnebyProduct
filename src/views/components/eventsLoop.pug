@@ -2,12 +2,15 @@ a.eventLoop(href=`/event/${event.slug}`)
   each url in event.featuredImage.urls
     if url.name === "little"
       img(src=`https://src.arneby.com/${url.url}`)
+
   .eventContent
     .data
       .distance= event.location.province
       .flag= event.category.name
+
     h3= event.title
     p.organizer Organizado: #{event.organizer.name}
+
     .rate
       - for (let i = 0; i < event.Rate; i++)
         - if (i + 1 === event.Rate && event.Rate % 1 !== 0)
@@ -16,13 +19,15 @@ a.eventLoop(href=`/event/${event.slug}`)
           span.star.fill
       - for (let i = event.Rate; i < 5; i++)
         span.star
+
     span.price
-    - if (event.prices[0].price === 0)
-      span.priceUnit GRATIS
-    - else
-      //- Mostrar el precio normal
-      span.priceUnit $#{event.prices[0].price} USD
+      - if (event.prices[0].price === 0)
+        span.priceUnit GRATIS
+      - else
+        //- Mostrar el precio normal
+        span.priceUnit $#{event.prices[0].price} USD
+
     p.date 
-      | Fecha de inicio: #{new Date(event.startDate * 1000).toLocaleString()}
+      | Fecha de inicio: #{new Date(event.startDate).toLocaleString()}
       br
-      | Fecha de fin: #{new Date(event.endDate * 1000).toLocaleString()}
+      | Fecha de fin: #{new Date(event.endDate).toLocaleString()}
